@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fdd835</color>
-    <color name="colorPrimaryLight">#ffff6b</color>
-    <color name="colorPrimaryDark">#c6a700</color>
-    <color name="windowBackgroundColor">#fffde7</color>
-    <color name="colorAccent">#5d4037</color>
+    <color name="yellow">#fdd835</color>
+    <color name="lightYellow">#ffff6b</color>
+    <color name="darkYellow">#c6a700</color>
+    <color name="quiteWhite">#fffde7</color>
+    <color name="brown">#5d4037</color>
+    <color name="redBrown">#3e2723</color>
+    <color name="lightRedBrown">#6a4f4b</color>
+    <color name="darkRedBrown">#1b0000</color>
+    <color name="gray">@android:color/darker_gray</color>
+    <color name="nearBlack">#212121</color>
 </resources>

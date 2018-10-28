@@ -9,6 +9,7 @@ import android.util.Log;
 import ch.beerpro.R;
 import ch.beerpro.presentation.MainActivity;
 import ch.beerpro.domain.models.User;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,10 +26,12 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
 
     private FirebaseAuth mAuth;
+    private int theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        theme = ThemeHelpers.setTheme(this, R.style.LoginScreenTheme_Light, R.style.LoginScreenTheme_Dark);
         setContentView(R.layout.activity_splash);
         mAuth = FirebaseAuth.getInstance();
     }
@@ -43,7 +46,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build());
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setIsSmartLockEnabled(false)
                     .setAvailableProviders(providers).setLogo(R.drawable.beer_glass_icon)
-                    .setTheme(R.style.LoginScreenTheme).build(), RC_SIGN_IN);
+                    .setTheme(theme).build(), RC_SIGN_IN);
         } else {
             Log.i(TAG, "User found, redirect to Home screen");
             redirectToHomeScreenActivity(currentUser);

@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="?appBarOverlayStyle">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -17,8 +17,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:theme="@style/ToolBarStyle" />
+            app:popupTheme="?popupOverlayStyle"
+            android:theme="?toolBarStyle" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"

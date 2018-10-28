@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +63,7 @@ public class CreateRatingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_rating);
         ButterKnife.bind(this);
         Nammu.init(this);
@@ -140,7 +142,7 @@ public class CreateRatingActivity extends AppCompatActivity {
                         setActiveWidgetColor(getResources().getColor(R.color.colorAccent));
                         setCropFrameColor(getResources().getColor(R.color.colorAccent));
                         setCropGridColor(getResources().getColor(R.color.colorAccent));
-                        setDimmedLayerColor(getResources().getColor(R.color.windowBackgroundColor));
+                        setDimmedLayerColor(getResources().getColor(R.color.quiteWhite));
                         setHideBottomControls(true);
                     }
                 };

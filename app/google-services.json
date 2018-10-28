@@ -1,43 +1,35 @@
 {
   "project_info": {
-    "project_number": "449677194575",
-    "firebase_url": "https://mge-beer-pro.firebaseio.com",
-    "project_id": "mge-beer-pro",
-    "storage_bucket": "mge-beer-pro.appspot.com"
+    "project_number": "727972181247",
+    "firebase_url": "https://mge-android-testat.firebaseio.com",
+    "project_id": "mge-android-testat",
+    "storage_bucket": "mge-android-testat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:449677194575:android:cf92c139ddcef4a8",
+        "mobilesdk_app_id": "1:727972181247:android:cf92c139ddcef4a8",
         "android_client_info": {
           "package_name": "ch.beerpro"
         }
       },
       "oauth_client": [
         {
-          "client_id": "449677194575-lvfb4dfl9o70j3essj07d15djeq4jof5.apps.googleusercontent.com",
+          "client_id": "727972181247-565ep0efdhgir9vooit3ditvoau5e9h0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ch.beerpro",
-            "certificate_hash": "bbb933acdf53fc378eeaa0c932cec9b1db5fd8d7"
+            "certificate_hash": "63a56c7a94cf5176c8e573fe60cee37d4e6c6d6a"
           }
         },
         {
-          "client_id": "449677194575-ogb0ivkadn329eknqlo50d5lhmqgtt54.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ch.beerpro",
-            "certificate_hash": "c2b88fedf32cf384a5863f6ed19652d8f3f3b8ca"
-          }
-        },
-        {
-          "client_id": "449677194575-r12ho5t13vs7db7sgna01d5mv1coo7th.apps.googleusercontent.com",
+          "client_id": "727972181247-pr18r2dkuu0kn9hnodlbfcp3ooe70iio.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyArmFIuMbcSz-vkm7GKrK6CxbEcyS5dap8"
+          "current_key": "AIzaSyCjZqwMXKozfHGQ6WWAMyJIv7MrXdiwRq0"
         }
       ],
       "services": {
@@ -48,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "449677194575-r12ho5t13vs7db7sgna01d5mv1coo7th.apps.googleusercontent.com",
+              "client_id": "727972181247-pr18r2dkuu0kn9hnodlbfcp3ooe70iio.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
