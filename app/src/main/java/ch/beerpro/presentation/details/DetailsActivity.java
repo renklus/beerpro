@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
-import com.bumptech.glide.Glide;
+
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -123,6 +124,13 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
+
+        Button addToFridge = dialog.findViewById(R.id.addToFridge);
+        addToFridge.setOnClickListener(v -> {
+            onFridgeClickedListener(v);
+            dialog.dismiss();
+        });
+
         dialog.show();
     }
 
@@ -170,6 +178,10 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
             setDrawableTint(wishlist, color);
             wishlist.setChecked(false);
         }
+    }
+
+    public void onFridgeClickedListener(View view) {
+        model.addItemToFridge(model.getBeer().getValue().getId());
     }
 
     @Override

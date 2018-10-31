@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import ch.beerpro.data.repositories.*;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.domain.models.MyBeer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
@@ -24,8 +25,10 @@ public class MainViewModel extends ViewModel implements CurrentUser {
     private final LikesRepository likesRepository;
     private final RatingsRepository ratingsRepository;
     private final WishlistRepository wishlistRepository;
+    private final FridgeRepository fridgeRepository;
 
     private final LiveData<List<Wish>> myWishlist;
+    private final LiveData<List<FridgeItem>> myFridgeItems;
     private final LiveData<List<Rating>> myRatings;
     private final LiveData<List<MyBeer>> myBeers;
 
@@ -36,6 +39,7 @@ public class MainViewModel extends ViewModel implements CurrentUser {
         beersRepository = new BeersRepository();
         likesRepository = new LikesRepository();
         wishlistRepository = new WishlistRepository();
+        fridgeRepository = new FridgeRepository();
         ratingsRepository = new RatingsRepository();
         MyBeersRepository myBeersRepository = new MyBeersRepository();
 
@@ -43,8 +47,9 @@ public class MainViewModel extends ViewModel implements CurrentUser {
 
         MutableLiveData<String> currentUserId = new MutableLiveData<>();
         myWishlist = wishlistRepository.getMyWishlist(currentUserId);
+        myFridgeItems = fridgeRepository.getMyFridgeList(currentUserId);
         myRatings = ratingsRepository.getMyRatings(currentUserId);
-        myBeers = myBeersRepository.getMyBeers(allBeers, myWishlist, myRatings);
+        myBeers = myBeersRepository.getMyBeers(allBeers, myWishlist, myRatings, myFridgeItems);
 
         /*
          * Set the current user id, which is used as input for the getMyWishlist and getMyRatings calls above.
@@ -66,6 +71,10 @@ public class MainViewModel extends ViewModel implements CurrentUser {
 
     public LiveData<List<Wish>> getMyWishlist() {
         return myWishlist;
+    }
+
+    public LiveData<List<FridgeItem>> getMyFridgeItems() {
+        return myFridgeItems;
     }
 
     public LiveData<List<String>> getBeerCategories() {

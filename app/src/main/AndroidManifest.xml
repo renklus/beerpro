@@ -59,6 +59,15 @@
                 android:value=".presentation.MainActivity" />
         </activity>
         <activity
+            android:name=".presentation.profile.myfridge.FridgeActivity"
+            android:label="@string/title_activity_fridge"
+            android:parentActivityName=".presentation.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+        </activity>
+        <activity
             android:name=".presentation.profile.myratings.MyRatingsActivity"
             android:label="@string/title_activity_myratings"
             android:parentActivityName=".presentation.MainActivity"
