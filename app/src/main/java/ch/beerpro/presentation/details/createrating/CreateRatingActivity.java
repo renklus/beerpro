@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.presentation.utils.ResourceHelpers;
 import ch.beerpro.presentation.utils.ThemeHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -137,12 +138,16 @@ public class CreateRatingActivity extends AppCompatActivity {
                 UCrop.Options options = new UCrop.Options() {
                     {
                         setToolbarTitle("Foto zuschneiden");
-                        setToolbarColor(getResources().getColor(R.color.colorPrimary));
-                        setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-                        setActiveWidgetColor(getResources().getColor(R.color.colorAccent));
-                        setCropFrameColor(getResources().getColor(R.color.colorAccent));
-                        setCropGridColor(getResources().getColor(R.color.colorAccent));
-                        setDimmedLayerColor(getResources().getColor(R.color.quiteWhite));
+                        int colorPrimary = ResourceHelpers.getAttributeColor(CreateRatingActivity.this, R.attr.colorPrimary);
+                        int colorPrimaryDark = ResourceHelpers.getAttributeColor(CreateRatingActivity.this, R.attr.colorPrimaryDark);
+                        int colorAccent = ResourceHelpers.getAttributeColor(CreateRatingActivity.this, R.attr.colorAccent);
+                        int background = ResourceHelpers.getAttributeColor(CreateRatingActivity.this, android.R.attr.windowBackground);
+                        setToolbarColor(colorPrimary);
+                        setStatusBarColor(colorPrimaryDark);
+                        setActiveWidgetColor(colorAccent);
+                        setCropFrameColor(colorAccent);
+                        setCropGridColor(colorAccent);
+                        setDimmedLayerColor(background);
                         setHideBottomControls(true);
                     }
                 };

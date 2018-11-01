@@ -23,7 +23,8 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="?iconTabBarStyle"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="?attr/colorPrimary"
-        app:srcCompat="@drawable/ic_photo_camera_brown_24dp" />
+        app:srcCompat="@drawable/ic_photo_camera_brown_24dp"
+        style="?fabStyle"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

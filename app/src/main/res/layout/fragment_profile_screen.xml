@@ -62,7 +62,8 @@
 
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/minimum_margin"
-                    app:srcCompat="@drawable/ic_bottle" />
+                    app:srcCompat="@drawable/ic_bottle"
+                    android:tint="?colorAccent"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -103,7 +104,8 @@
 
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/minimum_margin"
-                    app:srcCompat="@drawable/ic_star_brown_24dp" />
+                    app:srcCompat="@drawable/ic_star_brown_24dp"
+                    android:tint="?colorAccent"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -145,7 +147,8 @@
 
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/minimum_margin"
-                    app:srcCompat="@drawable/ic_bookmark_brown_24dp" />
+                    app:srcCompat="@drawable/ic_bookmark_brown_24dp"
+                    android:tint="?colorAccent"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -187,7 +190,8 @@
 
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/minimum_margin"
-                    app:srcCompat="@drawable/ic_refrigerator" />
+                    app:srcCompat="@drawable/ic_refrigerator"
+                    android:tint="?colorAccent"/>
 
                 <TextView
                     android:layout_width="0dp"

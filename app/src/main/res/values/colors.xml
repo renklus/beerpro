@@ -9,5 +9,7 @@
     <color name="lightRedBrown">#6a4f4b</color>
     <color name="darkRedBrown">#1b0000</color>
     <color name="gray">@android:color/darker_gray</color>
-    <color name="nearBlack">#212121</color>
+    <color name="darkGray">#424242</color>
+    <color name="darkerGray">#212121</color>
+    <color name="nearBlack">#1b1b1b</color>
 </resources>

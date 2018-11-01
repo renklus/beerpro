@@ -1,5 +1,6 @@
 package ch.beerpro.presentation.ratings;
 
+import android.content.Context;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import ch.beerpro.R;
 import ch.beerpro.presentation.utils.EntityPairDiffItemCallback;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
+import ch.beerpro.presentation.utils.ResourceHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
@@ -127,20 +129,22 @@ public class RatingsRecyclerViewAdapter extends ListAdapter<Pair<Rating, Wish>, 
 
             numLikes.setText(itemView.getResources().getString(R.string.fmt_num_ratings, item.getLikes().size()));
 
-            if (item.getLikes().containsKey(user.getUid())) {
-                int color = fragment.getResources().getColor(R.color.colorPrimary);
-                setDrawableTint(like, color);
-            } else {
-                int color = fragment.getResources().getColor(android.R.color.darker_gray);
-                setDrawableTint(like, color);
-            }
+            Context context = fragment.getContext();
+            if (context != null) {
+                int activeColor = ResourceHelpers.getAttributeColor(context, R.attr.iconActiveColor);
+                int inactiveColor = ResourceHelpers.getAttributeColor(context, R.attr.iconInactiveColor);
 
-            if (wish != null) {
-                int color = fragment.getResources().getColor(R.color.colorPrimary);
-                setDrawableTint(wishlist, color);
-            } else {
-                int color = fragment.getResources().getColor(android.R.color.darker_gray);
-                setDrawableTint(wishlist, color);
+                if (item.getLikes().containsKey(user.getUid())) {
+                    setDrawableTint(like, activeColor);
+                } else {
+                    setDrawableTint(like, inactiveColor);
+                }
+
+                if (wish != null) {
+                    setDrawableTint(wishlist, activeColor);
+                } else {
+                    setDrawableTint(wishlist, inactiveColor);
+                }
             }
 
             if (listener != null) {

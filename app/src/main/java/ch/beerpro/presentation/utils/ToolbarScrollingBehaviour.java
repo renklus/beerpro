@@ -45,17 +45,19 @@ public class ToolbarScrollingBehaviour<V extends View> extends CoordinatorLayout
         Log.i(TAG, "ScrollY: " + scrollY);
         Log.i(TAG, "Alpha: " + alpha);
 
-        Resources resources = child.getResources();
 
-        int newToolbarColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.colorPrimary),
+        int colorPrimary = ResourceHelpers.getAttributeColor(target.getContext(), R.attr.colorPrimary);
+        int colorAccent = ResourceHelpers.getAttributeColor(target.getContext(), R.attr.colorAccent);
+        int colorPrimaryDark = ResourceHelpers.getAttributeColor(target.getContext(), R.attr.colorPrimaryDark);
+        int newToolbarColor = ColorUtils.setAlphaComponent(colorPrimary,
                 Math.max(Math.min((int) (255 * alpha), 255), 0));
         toolbarLayout.setBackgroundColor(newToolbarColor);
 
-        int newToolbarTextColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.colorAccent),
+        int newToolbarTextColor = ColorUtils.setAlphaComponent(colorAccent,
                 Math.max(Math.min((int) (255 * alpha), 255), 0));
         toolbar.setTitleTextColor(newToolbarTextColor);
 
-        int newStatusbarColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.colorPrimaryDark),
+        int newStatusbarColor = ColorUtils.setAlphaComponent(colorPrimaryDark,
                 Math.max(Math.min((int) (255 * alpha), 255), 0));
         statusBar.setBackgroundColor(newStatusbarColor);
 
