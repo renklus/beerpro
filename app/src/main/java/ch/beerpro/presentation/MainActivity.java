@@ -23,6 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import ch.beerpro.presentation.explore.overview.category.CategoryActivity;
 /**
  * The {@link MainActivity} is the entry point for logged-in users (actually, users start at the
  * {@link SplashScreenActivity}, but if they are still logged in they will get redirected to this activity.
@@ -30,7 +31,7 @@ import com.google.android.material.tabs.TabLayout;
  * The Activity has three tabs, each of which implemented by a fragment and held together by a {@link ViewPager}.
  */
 public class MainActivity extends AppCompatActivity
-        implements BeerCategoriesFragment.OnItemSelectedListener, BeerManufacturersFragment.OnItemSelectedListener {
+        implements BeerCategoriesFragment.OnItemSelectedListener, BeerManufacturersFragment.OnItemSelectedListener/*, CategoryOverviewFragment.OnItemSelectedListener */{
 
     /**
      * We use ButterKnife's view injection instead of having to call findViewById repeatedly.
@@ -129,7 +130,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBeerCategorySelected(String name) {
-        // TODO implement
+        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+        intent.putExtra("category", name);
+        startActivity(intent);
+        finish();
     }
 
     @Override
