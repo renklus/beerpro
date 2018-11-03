@@ -16,7 +16,6 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.explore.overview.ViewPagerAdapter;
-import ch.beerpro.presentation.profile.mybeers.MyBeersViewModel;
 import ch.beerpro.presentation.profile.mybeers.OnMyBeerItemInteractionListener;
 
 public class CategoryActivity extends AppCompatActivity
@@ -24,8 +23,6 @@ public class CategoryActivity extends AppCompatActivity
 
     private CategoryViewModel categoryViewModel;
     private ViewPagerAdapter adapter;
-    private EditText searchEditText;
-    private MyBeersViewModel myBeersViewModel;
     private TabLayout tabLayout;
 
     @Override
@@ -34,20 +31,16 @@ public class CategoryActivity extends AppCompatActivity
         setContentView(R.layout.activity_category);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
-        tabLayout = findViewById(R.id.tablayout);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
         viewPager.setSaveFromParentEnabled(false);
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
-        myBeersViewModel = ViewModelProviders.of(this).get(MyBeersViewModel.class);
 
         handleSearch(getIntent().getExtras().getString("category"));
             }
 
     private void handleSearch(String text) {
         categoryViewModel.setSearchTerm(text);
-        myBeersViewModel.setSearchTerm(text);
         adapter.notifyDataSetChanged();
     }
 
