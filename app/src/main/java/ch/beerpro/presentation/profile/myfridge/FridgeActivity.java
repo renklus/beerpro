@@ -18,6 +18,7 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.details.DetailsActivity;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import lombok.val;
 
 import java.util.List;
@@ -39,12 +40,12 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_my_fridge);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.title_activity_fridge));
-
 
         model = ViewModelProviders.of(this).get(FridgeViewModel.class);
         model.getMyFridgeWithBeers().observe(this, this::updateFridge);
@@ -55,7 +56,6 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeItemInt
         adapter = new FridgeRecyclerViewAdapter(this);
 
         recyclerView.setAdapter(adapter);
-
     }
 
     private void updateFridge(List<Pair<FridgeItem, Beer>> entries) {

@@ -4,33 +4,41 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.google.android.material.tabs.TabLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
-import ch.beerpro.presentation.MainActivity;
 import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.explore.overview.ViewPagerAdapter;
 import ch.beerpro.presentation.profile.mybeers.OnMyBeerItemInteractionListener;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 
 public class CategoryActivity extends AppCompatActivity
         implements CategoryOverviewFragment.OnItemSelectedListener, OnMyBeerItemInteractionListener {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     private CategoryViewModel categoryViewModel;
     private ViewPagerAdapter adapter;
-    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_category);
+        ButterKnife.bind(this);
+
+        String category = getIntent().getExtras().getString("category");
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(category);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -38,8 +46,8 @@ public class CategoryActivity extends AppCompatActivity
         viewPager.setSaveFromParentEnabled(false);
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
 
-        handleSearch(getIntent().getExtras().getString("category"));
-            }
+        handleSearch(category);
+    }
 
     private void handleSearch(String text) {
         categoryViewModel.setSearchTerm(text);

@@ -1,10 +1,13 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/windowBackgroundColor</item>
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryDark">@color/darkYellow</item>
+        <item name="colorAccent">@color/brown</item>
+        <item name="android:windowBackground">@color/quiteWhite</item>
+        <item name="alternativeBackgroundColor">@android:color/white</item>
+        <item name="iconActiveColor">?colorPrimary</item>
+        <item name="iconInactiveColor">@color/gray</item>
 
         <!-- enable window content transitions -->
         <item name="android:windowActivityTransitions">true</item>
@@ -12,8 +15,44 @@
         <!-- specify shared element transitions -->
         <item name="android:windowSharedElementEnterTransition">@transition/change_view_transform</item>
         <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
+
+        <item name="popupOverlayStyle">@style/AppTheme.Light.PopupOverlay</item>
+        <item name="appBarOverlayStyle">@style/AppTheme.AppBarOverlay</item>
+        <item name="toolBarStyle">@style/ToolBarStyle.Light</item>
+        <item name="ratingBarStyle">@style/RatingBar.Light</item>
+        <item name="fabStyle">@style/FloatingActionButton.Light</item>
+        <item name="iconTabBarStyle">@style/IconTabBarStyle.Light</item>
     </style>
 
+    <style name="DarkAppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/darkGray</item>
+        <item name="colorPrimaryDark">@color/darkerGray</item>
+        <item name="colorAccent">@color/yellow</item>
+        <item name="android:windowBackground">@color/nearBlack</item>
+        <item name="alternativeBackgroundColor">?colorPrimary</item>
+        <item name="iconActiveColor">?colorAccent</item>
+        <item name="iconInactiveColor">@color/gray</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/change_view_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_view_transform</item>
+        <item name="android:listViewStyle">@style/listViewPrefs</item>
+
+        <item name="popupOverlayStyle">@style/AppTheme.Dark.PopupOverlay</item>
+        <item name="appBarOverlayStyle">@style/AppTheme.AppBarOverlay</item>
+        <item name="toolBarStyle">@style/ToolBarStyle.Dark</item>
+        <item name="ratingBarStyle">@style/RatingBar.Dark</item>
+        <item name="fabStyle">@style/FloatingActionButton.Dark</item>
+        <item name="iconTabBarStyle">@style/IconTabBarStyle.Dark</item>
+    </style>
+
+    <style name="listViewPrefs" parent="@android:style/Widget.ListView">
+        <item name="android:background">@color/nearBlack</item>
+        <item name="android:cacheColorHint">@color/nearBlack</item>
+    </style>
 
     <style name="DetailsPageTheme" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -28,15 +67,23 @@
         <item name="android:textSize">0sp</item>
     </style>
 
-    <style name="ToolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:textColorSecondary">@color/colorAccent</item>
-        <item name="actionMenuTextColor">@color/colorAccent</item>
+    <style name="ToolBarStyle.Light" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/brown</item>
+        <item name="android:textColorSecondary">@color/brown</item>
+        <item name="actionMenuTextColor">@color/brown</item>
         <item name="titleMarginStart">@dimen/title_margin_start</item>
     </style>
 
-    <style name="LoginScreenTheme" parent="AppTheme">
-        <item name="android:windowBackground">@color/colorPrimary</item>
+    <style name="ToolBarStyle.Dark" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="titleMarginStart">@dimen/title_margin_start</item>
+    </style>
+
+    <style name="LoginScreenTheme.Light" parent="AppTheme">
+        <item name="android:windowBackground">@color/yellow</item>
+    </style>
+
+    <style name="LoginScreenTheme.Dark" parent="DarkAppTheme">
+        <item name="android:windowBackground">@color/nearBlack</item>
     </style>
 
     <style name="FirebaseUI.AuthMethodPicker.Logo">
@@ -46,25 +93,46 @@
         <item name="android:padding">0dp</item>
     </style>
 
-    <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@android:color/darker_gray</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
+    <style name="RatingBar.Light" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
+    <style name="RatingBar.Dark" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
+    <style name="FloatingActionButton.Light" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">?colorPrimary</item>
+    </style>
+
+    <style name="FloatingActionButton.Dark" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">?colorAccent</item>
+        <item name="android:tint">?android:colorForegroundInverse</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Light.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.Dark.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
     <dimen name="title_margin_start">24dp</dimen>
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorColor">?colorAccent</item>
         <item name="tabMaxWidth">256dp</item>
         <item name="tabIndicatorGravity">bottom</item>
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabPaddingStart">6dp</item>
         <item name="tabPaddingEnd">6dp</item>
-        <!--<item name="android:layout_marginLeft">64dp</item>
-        <item name="android:layout_marginRight">64dp</item>-->
+    </style>
+
+    <style name="IconTabBarStyle.Light" parent="Widget.Design.TabLayout" />
+
+    <style name="IconTabBarStyle.Dark" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?colorAccent</item>
+        <item name="tabIconTint">?android:colorForeground</item>
     </style>
 </resources>

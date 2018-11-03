@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.presentation.details.DetailsActivity;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 
 public class MyBeersActivity extends AppCompatActivity implements OnMyBeerItemInteractionListener {
 
@@ -26,6 +27,7 @@ public class MyBeersActivity extends AppCompatActivity implements OnMyBeerItemIn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_my_beers);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);

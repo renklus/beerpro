@@ -1,7 +1,9 @@
 package ch.beerpro.presentation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,9 +16,11 @@ import ch.beerpro.R;
 import ch.beerpro.presentation.explore.BeerCategoriesFragment;
 import ch.beerpro.presentation.explore.BeerManufacturersFragment;
 import ch.beerpro.presentation.explore.ExploreFragment;
+import ch.beerpro.presentation.preferences.PreferencesActivity;
 import ch.beerpro.presentation.profile.ProfileFragment;
 import ch.beerpro.presentation.ratings.RatingsFragment;
 import ch.beerpro.presentation.splash.SplashScreenActivity;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import ch.beerpro.presentation.utils.ViewPagerAdapter;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,9 +47,16 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
 
+    private boolean useDarkTheme = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        int theme = ThemeHelpers.setTheme(this);
+        getApplication().setTheme(theme);
+        useDarkTheme = theme == R.style.DarkAppTheme;
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -65,6 +76,16 @@ public class MainActivity extends AppCompatActivity
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
+        String useDarkThemeKey = getString(R.string.preferences_use_dark_theme_key);
+        if(useDarkTheme != settings.getBoolean(useDarkThemeKey, false)) {
+            recreate();
+        }
     }
 
     private void setupViewPager(ViewPager viewPager, TabLayout tabLayout) {
@@ -114,6 +135,9 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.action_logout:
                 logout();
+                return true;
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferencesActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

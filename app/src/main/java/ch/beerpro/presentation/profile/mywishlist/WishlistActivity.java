@@ -18,6 +18,7 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.DetailsActivity;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import lombok.val;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class WishlistActivity extends AppCompatActivity implements OnWishlistIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_my_wishlist);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);

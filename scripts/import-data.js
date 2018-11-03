@@ -1,11 +1,11 @@
-const admin = require("./node_modules/firebase-admin");
-const serviceAccount = require("./service-key.json");
-
 const data = require("./data.json");
+
+const admin = require("firebase-admin");
+const serviceAccount = require("./service-key.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https:// mge-beer-pro.firebaseio.com"
+  databaseURL: "https://mge-android-testat.firebaseio.com"
 });
 
 data &&

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="appBarOverlayStyle" format="reference"/>
+    <attr name="popupOverlayStyle" format="reference"/>
+    <attr name="toolBarStyle" format="reference"/>
+    <attr name="ratingBarStyle" format="reference"/>
+    <attr name="fabStyle" format="reference"/>
+    <attr name="iconTabBarStyle" format="reference"/>
+    <attr name="alternativeBackgroundColor" format="reference"/>
+    <attr name="iconActiveColor" format="reference"/>
+    <attr name="iconInactiveColor" format="reference"/>
+</resources>

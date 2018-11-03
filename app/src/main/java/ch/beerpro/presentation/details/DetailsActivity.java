@@ -27,7 +27,9 @@ import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
-
+import ch.beerpro.presentation.utils.ResourceHelpers;
+import ch.beerpro.presentation.utils.ThemeHelpers;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -83,6 +85,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeHelpers.setTheme(this);
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
@@ -170,12 +173,12 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
     private void toggleWishlistView(Wish wish) {
         if (wish != null) {
-            int color = getResources().getColor(R.color.colorPrimary);
-            setDrawableTint(wishlist, color);
+            int activeColor = ResourceHelpers.getAttributeColor(this, R.attr.iconActiveColor);
+            setDrawableTint(wishlist, activeColor);
             wishlist.setChecked(true);
         } else {
-            int color = getResources().getColor(android.R.color.darker_gray);
-            setDrawableTint(wishlist, color);
+            int inactiveColor = ResourceHelpers.getAttributeColor(this, R.attr.iconInactiveColor);
+            setDrawableTint(wishlist, inactiveColor);
             wishlist.setChecked(false);
         }
     }

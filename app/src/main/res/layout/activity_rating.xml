@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="?alternativeBackgroundColor"
     tools:context=".presentation.details.createrating.CreateRatingActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="?appBarOverlayStyle">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ToolBarStyle"
+            android:theme="?toolBarStyle"
             app:layout_collapseMode="pin"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="?popupOverlayStyle" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -80,7 +80,7 @@
                 android:numStars="5"
                 android:rating="0"
                 android:stepSize="0.5"
-                android:theme="@style/RatingBar"
+                android:theme="?ratingBarStyle"
                 android:transitionName="rating"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import ch.beerpro.R;
 import ch.beerpro.presentation.MainActivity;
 import ch.beerpro.domain.models.User;
+import ch.beerpro.presentation.utils.ThemeHelpers;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,10 +26,12 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
 
     private FirebaseAuth mAuth;
+    private int theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        theme = ThemeHelpers.setTheme(this, R.style.LoginScreenTheme_Light, R.style.LoginScreenTheme_Dark);
         setContentView(R.layout.activity_splash);
         mAuth = FirebaseAuth.getInstance();
     }
@@ -40,44 +42,21 @@ public class SplashScreenActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser == null) {
-            // redirectToLoginScreen(); // Default provided by lecturer
-            provideAnonymousLogin();
+            Log.i(TAG, "No user found, redirect to Login screen");
+            List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build());
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setIsSmartLockEnabled(false)
+                    .setAvailableProviders(providers).setLogo(R.drawable.beer_glass_icon)
+                    .setTheme(theme).build(), RC_SIGN_IN);
         } else {
             Log.i(TAG, "User found, redirect to Home screen");
             redirectToHomeScreenActivity(currentUser);
         }
     }
 
-    private void redirectToLoginScreen() {
-        Log.i(TAG, "No user found, redirect to Login screen");
-        List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build());
-        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setIsSmartLockEnabled(false)
-                .setAvailableProviders(providers).setLogo(R.drawable.beer_glass_icon)
-                .setTheme(R.style.LoginScreenTheme).build(), RC_SIGN_IN);
-    }
-
-    private void provideAnonymousLogin() {
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInAnonymously:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        redirectToHomeScreenActivity(user);
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInAnonymously:failure", task.getException());
-                        Toast.makeText(SplashScreenActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        redirectToHomeScreenActivity(null);
-                    }
-                });
-    }
-
     private void redirectToHomeScreenActivity(FirebaseUser currentUser) {
         String uid = currentUser.getUid();
         String displayName = currentUser.getDisplayName();
-        String photoUrl = ""; // currentUser.getPhotoUrl().toString();
+        String photoUrl = currentUser.getPhotoUrl().toString();
         FirebaseFirestore.getInstance().collection(User.COLLECTION).document(uid)
                 .update(User.FIELD_NAME, displayName, User.FIELD_PHOTO, photoUrl);
 

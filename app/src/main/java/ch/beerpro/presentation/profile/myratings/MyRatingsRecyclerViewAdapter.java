@@ -19,6 +19,7 @@ import ch.beerpro.R;
 import ch.beerpro.presentation.utils.EntityPairDiffItemCallback;
 import ch.beerpro.domain.models.*;
 import ch.beerpro.domain.models.Wish;
+import ch.beerpro.presentation.utils.ResourceHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
@@ -126,11 +127,11 @@ public class MyRatingsRecyclerViewAdapter
             like.setVisibility(View.GONE);
 
             if (wish != null) {
-                int color = itemView.getResources().getColor(R.color.colorPrimary);
-                setDrawableTint(wishlist, color);
+                int activeColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconActiveColor);
+                setDrawableTint(wishlist, activeColor);
             } else {
-                int color = itemView.getResources().getColor(android.R.color.darker_gray);
-                setDrawableTint(wishlist, color);
+                int inactiveColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconInactiveColor);
+                setDrawableTint(wishlist, inactiveColor);
             }
 
             if (listener != null) {

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.presentation.utils.EntityDiffItemCallback;
+import ch.beerpro.presentation.utils.ResourceHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
@@ -101,9 +102,11 @@ public class RatingsRecyclerViewAdapter extends ListAdapter<Rating, RatingsRecyc
 
             numLikes.setText(itemView.getResources().getString(R.string.fmt_num_ratings, item.getLikes().size()));
             if (item.getLikes().containsKey(user.getUid())) {
-                like.setColorFilter(itemView.getResources().getColor(R.color.colorPrimary));
+                int activeColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconActiveColor);
+                like.setColorFilter(activeColor);
             } else {
-                like.setColorFilter(itemView.getResources().getColor(android.R.color.darker_gray));
+                int inactiveColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconInactiveColor);
+                like.setColorFilter(inactiveColor);
             }
             if (listener != null) {
                 like.setOnClickListener(v -> listener.onRatingLikedListener(item));

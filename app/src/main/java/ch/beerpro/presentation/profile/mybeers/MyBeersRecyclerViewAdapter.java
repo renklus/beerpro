@@ -21,6 +21,7 @@ import ch.beerpro.domain.models.MyBeerFromFridge;
 import ch.beerpro.domain.models.MyBeerFromRating;
 import ch.beerpro.domain.models.MyBeerFromWishlist;
 import ch.beerpro.presentation.utils.DrawableHelpers;
+import ch.beerpro.presentation.utils.ResourceHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
@@ -122,12 +123,13 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
             addedAt.setText(formattedDate);
 
             if (entry instanceof MyBeerFromWishlist) {
+                int activeColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconActiveColor);
                 DrawableHelpers
-                        .setDrawableTint(removeFromWishlist, itemView.getResources().getColor(R.color.colorPrimary));
+                        .setDrawableTint(removeFromWishlist, activeColor);
                 onTheListSince.setText("auf der Wunschliste seit");
             } else if (entry instanceof MyBeerFromRating) {
-                DrawableHelpers.setDrawableTint(removeFromWishlist,
-                        itemView.getResources().getColor(android.R.color.darker_gray));
+                int inactiveColor = ResourceHelpers.getAttributeColor(itemView.getContext(), R.attr.iconInactiveColor);
+                DrawableHelpers.setDrawableTint(removeFromWishlist, inactiveColor);
                 removeFromWishlist.setText("Wunschliste");
                 onTheListSince.setText("beurteilt am");
             } else if (entry instanceof MyBeerFromFridge) {
