@@ -1,10 +1,9 @@
-package ch.beerpro.presentation.explore.overview;
+package ch.beerpro.presentation.explore.overview.category;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import ch.beerpro.presentation.explore.overview.category.CategoryOverviewFragment;
 import ch.beerpro.presentation.profile.mybeers.MyBeersFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {

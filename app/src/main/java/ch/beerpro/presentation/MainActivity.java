@@ -14,6 +14,7 @@ import ch.beerpro.R;
 import ch.beerpro.presentation.explore.BeerCategoriesFragment;
 import ch.beerpro.presentation.explore.BeerManufacturersFragment;
 import ch.beerpro.presentation.explore.ExploreFragment;
+import ch.beerpro.presentation.explore.overview.manufacturer.ManufacturerActivity;
 import ch.beerpro.presentation.profile.ProfileFragment;
 import ch.beerpro.presentation.ratings.RatingsFragment;
 import ch.beerpro.presentation.splash.SplashScreenActivity;
@@ -31,7 +32,7 @@ import ch.beerpro.presentation.explore.overview.category.CategoryActivity;
  * The Activity has three tabs, each of which implemented by a fragment and held together by a {@link ViewPager}.
  */
 public class MainActivity extends AppCompatActivity
-        implements BeerCategoriesFragment.OnItemSelectedListener, BeerManufacturersFragment.OnItemSelectedListener/*, CategoryOverviewFragment.OnItemSelectedListener */{
+        implements BeerCategoriesFragment.OnItemSelectedListener, BeerManufacturersFragment.OnItemSelectedListener {
 
     /**
      * We use ButterKnife's view injection instead of having to call findViewById repeatedly.
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBeerManufacturerSelected(String name) {
-        // TODO implement
+        Intent intent = new Intent(MainActivity.this, ManufacturerActivity.class);
+        intent.putExtra("manufacturer", name);
+        startActivity(intent);
     }
 }
