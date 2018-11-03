@@ -28,12 +28,27 @@
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme" />
         <activity android:name=".presentation.explore.search.SearchActivity" />
+
+
         <activity
-            android:name=".presentation.explore.overview.category.CategoryActivity">
+            android:name=".presentation.explore.overview.category.CategoryActivity"
+            android:label="@string/title_activity_category"
+            android:parentActivityName=".presentation.MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />
         </activity>
+        <!---->
+        <!--<activity-->
+            <!--android:name=".presentation.explore.overview.category.CategoryActivity"-->
+            <!--android:parentActivityName=".presentation.MainActivity">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".presentation.MainActivity" />-->
+        <!--</activity>-->
+        <!---->
+
         <activity
             android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_single_beer"

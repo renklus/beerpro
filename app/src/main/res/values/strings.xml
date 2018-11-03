@@ -104,4 +104,5 @@
     <string name="title_activity_myratings">Meine Bewertungen</string>
     <string name="title_activity_mybeers">Meine Biere</string>
     <string name="action_search">Bier suchen</string>
+    <string name="title_activity_category">Kategorie</string>
 </resources>
