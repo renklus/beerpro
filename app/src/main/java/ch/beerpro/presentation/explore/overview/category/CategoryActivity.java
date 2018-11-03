@@ -66,10 +66,4 @@ public class CategoryActivity extends AppCompatActivity
     public void onWishClickedListener(Beer item) {
         categoryViewModel.toggleItemInWishlist(item.getId());
     }
-
-    @Override
-    public void onBackPressed()     {
-        Intent intent = NavUtils.getParentActivityIntent(this);
-        startActivity(intent);
-    }
 }
