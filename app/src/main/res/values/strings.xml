@@ -106,6 +106,7 @@
     <string name="title_activity_preferences">Einstellungen</string>
     <string name="action_search">Bier suchen</string>
     <string name="title_activity_category">Kategorie</string>
+    <string name="title_activity_manufacturer">Brauerei</string>
     <string name="preferences_use_dark_theme">Dark Theme verwenden</string>
     <string name="preferences_use_dark_theme_key">use_dark_theme</string>
     <string name="preferences_category_design">Design</string>

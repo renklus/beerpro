@@ -1,60 +1,63 @@
-package ch.beerpro.presentation.explore.overview.category;
+package ch.beerpro.presentation.explore.overview.manufacturer;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ch.beerpro.presentation.utils.ThemeHelpers;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.profile.mybeers.OnMyBeerItemInteractionListener;
-import ch.beerpro.presentation.utils.ThemeHelpers;
 
-public class CategoryActivity extends AppCompatActivity
-        implements CategoryOverviewFragment.OnItemSelectedListener, OnMyBeerItemInteractionListener {
+public class ManufacturerActivity extends AppCompatActivity
+        implements ManufacturerOverviewFragment.OnItemSelectedListener, OnMyBeerItemInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private CategoryViewModel categoryViewModel;
+    private ManufacturerViewModel manufacturerViewModel;
     private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ThemeHelpers.setTheme(this);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_manufacturer);
         ButterKnife.bind(this);
 
-        String category = getIntent().getExtras().getString("category");
+        String manufacturer = getIntent().getExtras().getString("manufacturer");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(category);
+        getSupportActionBar().setTitle(manufacturer);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setSaveFromParentEnabled(false);
-        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        manufacturerViewModel = ViewModelProviders.of(this).get(ManufacturerViewModel.class);
 
-        handleSearch(category);
-    }
+        handleSearch(manufacturer);
+            }
 
     private void handleSearch(String text) {
-        categoryViewModel.setSearchTerm(text);
+        manufacturerViewModel.setSearchTerm(text);
         adapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onCategoryOverviewListItemSelected(View animationSource, Beer item) {
+    public void onManufacturerOverviewListItemSelected(View animationSource, Beer item) {
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra(DetailsActivity.ITEM_ID, item.getId());
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, animationSource, "image");
@@ -71,6 +74,6 @@ public class CategoryActivity extends AppCompatActivity
 
     @Override
     public void onWishClickedListener(Beer item) {
-        categoryViewModel.toggleItemInWishlist(item.getId());
+        manufacturerViewModel.toggleItemInWishlist(item.getId());
     }
 }

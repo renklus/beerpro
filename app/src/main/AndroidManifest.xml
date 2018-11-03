@@ -34,6 +34,14 @@
                 android:value=".presentation.MainActivity" />
         </activity>
         <activity
+            android:name=".presentation.explore.overview.manufacturer.ManufacturerActivity"
+            android:label="@string/title_activity_manufacturer"
+            android:parentActivityName=".presentation.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+        </activity>
+        <activity
             android:name=".presentation.details.DetailsActivity"
             android:label="@string/title_activity_single_beer"
             android:parentActivityName=".presentation.explore.search.SearchActivity">
