@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/preferences_category_design">
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="@string/preferences_use_dark_theme_key"
             android:title="@string/preferences_use_dark_theme" />
     </PreferenceCategory>
